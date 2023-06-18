@@ -11,14 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllers();
-builder.Services.AddControllers();
+
 builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("SqlServerDb")));
 builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
 {
-    //! Change your security Policy here to suits your policy
     options.Password.RequireUppercase = false;
     options.Password.RequireDigit = false;
-    //! tutorial purposes im allowed users to sign in without their email confirmation
+
     options.SignIn.RequireConfirmedEmail = false;
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
 
