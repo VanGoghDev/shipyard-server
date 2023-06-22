@@ -1,10 +1,9 @@
-﻿namespace Shipyard.Application.Services;
+﻿using Shipyard.Domain.Entities;
+
+namespace Shipyard.Application.Services;
 
 public record AuthenticationResult
 (
-    Guid Id,
-    string FirstName,
-    string LastName,
-    string Email,
-    string Token      
+    User User,
+    string Token
 );

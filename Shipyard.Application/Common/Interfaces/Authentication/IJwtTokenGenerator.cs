@@ -1,6 +1,8 @@
-﻿namespace Shipyard.Application.Common.Interfaces.Authentication;
+﻿using Shipyard.Domain.Entities;
+
+namespace Shipyard.Application.Common.Interfaces.Authentication;
 
 public interface IJwtTokenGenerator
 {
-    string GenerateToken(Guid id, string name, string lastName);
+    string GenerateToken(User user);
 }
