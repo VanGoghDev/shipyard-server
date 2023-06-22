@@ -1,10 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shipyard.Application.Common.Interfaces.Authentication;
 using Shipyard.Application.Common.Interfaces.Persistence;
 using Shipyard.Application.Common.Services;
 using Shipyard.Infrastructure.Authentication;
 using Shipyard.Infrastructure.Persistence;
+using Shipyard.Infrastructure.Persistence.Repositories;
 using Shipyard.Infrastructure.Services;
 
 namespace Shipyard.Infrastructure;
@@ -18,8 +20,14 @@ public static class DependencyInjection
         services.AddSingleton<IDateTimeProvider, DateTimeProvider>();
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
 
+        return services;
+    }
+
+    public static IServiceCollection AddPersistence(this IServiceCollection services)
+    {
         services.AddScoped<IUserRepository, UserRepository>();
-        
+        services.AddDbContext<UserDbContext>(options => options.UseNpgsql(""));
+
         return services;
     }
 }

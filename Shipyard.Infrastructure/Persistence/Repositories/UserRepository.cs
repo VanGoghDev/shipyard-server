@@ -1,11 +1,17 @@
 ﻿using Shipyard.Application.Common.Interfaces.Persistence;
 using Shipyard.Domain.Entities;
 
-namespace Shipyard.Infrastructure.Persistence;
+namespace Shipyard.Infrastructure.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
     private static readonly List<User> _users = new();
+    private readonly UserDbContext _dbContext;
+
+    public UserRepository(UserDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
     
     public void AddUser(User user)
     {
