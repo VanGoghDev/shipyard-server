@@ -5,7 +5,7 @@ namespace Shipyard.Infrastructure.Persistence.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    private static readonly List<User> _users = new();
+    private static readonly List<User> Users = new();
     private readonly UserDbContext _dbContext;
 
     public UserRepository(UserDbContext dbContext)
@@ -15,11 +15,11 @@ public class UserRepository : IUserRepository
     
     public void AddUser(User user)
     {
-        _users.Add(user);
+        Users.Add(user);
     }
 
     public User? GetUserByEmail(string email)
     {
-        return _users.SingleOrDefault(u => u.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
+        return Users.SingleOrDefault(u => u.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
     }
 }
