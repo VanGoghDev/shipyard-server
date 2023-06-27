@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ErrorOr;
+using Microsoft.AspNetCore.Mvc;
 using Shipyard.Application.Services;
 using Shipyard.Contracts.Authentication;
 
 namespace Shipyard.Api.Controllers;
 
-[ApiController]
 [Route("auth")]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
     private IAuthService _authService;
 
@@ -18,14 +18,21 @@ public class AuthenticationController : ControllerBase
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
+        
         var authResult = _authService.Register(request.FirstName, request.LastName, request.Email, request.Password);
-        return Ok(authResult);
+        return authResult.Match(
+            validResult => Ok(validResult),
+            errors => Problem(errors)
+        );
     }
     
     [HttpPost("login")]
     public IActionResult Login(LoginRequest request)
     {
         var authResult = _authService.Login(request.Email, request.Password);
-        return Ok(authResult);
+        return authResult.Match(
+            validResult => Ok(validResult),
+            errors => Problem(errors)
+            ); 
     }
 }

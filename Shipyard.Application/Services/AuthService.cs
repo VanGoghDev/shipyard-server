@@ -1,5 +1,7 @@
-﻿using Shipyard.Application.Common.Interfaces.Authentication;
+﻿using ErrorOr;
+using Shipyard.Application.Common.Interfaces.Authentication;
 using Shipyard.Application.Common.Interfaces.Persistence;
+using Shipyard.Domain.Common.Errors;
 using Shipyard.Domain.Entities;
 
 namespace Shipyard.Application.Services;
@@ -15,12 +17,12 @@ public class AuthService : IAuthService
         _userRepository = userRepository;
     }
     
-    public AuthenticationResult Register(string firstName, string lastName, string email, string password)
+    public ErrorOr<AuthenticationResult> Register(string firstName, string lastName, string email, string password)
     {
         // 1. Check if user with given email exists.
         if (_userRepository.GetUserByEmail(email) is not null)
         {
-            throw new Exception("User with given login already exists.");
+            return new[] { Errors.User.DuplicateEmail };
         }
 
         var user = new User
@@ -43,20 +45,20 @@ public class AuthService : IAuthService
             token);
     }
     
-    public AuthenticationResult Login(string email, string password)
+    public ErrorOr<AuthenticationResult> Login(string email, string password)
     {
         // 1. Check if user with given email exists in db.
         var user = _userRepository.GetUserByEmail(email);
 
         if (user is null)
         {
-            throw new Exception("User not found.");
+            return new[] { Errors.Authentication.InvalidPassword} ;
         }
         
         // 2. Check if given password equals user password.
         if (!user.Password.Equals(password))
         {
-            throw new Exception("Incorrect password.");
+            return new[] { Errors.Authentication.InvalidPassword };
         }
 
         var token = _jwtTokenGenerator.GenerateToken(user);

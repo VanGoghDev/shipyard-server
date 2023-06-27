@@ -8,7 +8,7 @@ public class ErrorsController: ControllerBase
     [Route("/error")]
     public ActionResult Error()
     {
-        Exception? exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
+        var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
         return Problem(title: exception?.Message, statusCode: 400);
     }
 }
