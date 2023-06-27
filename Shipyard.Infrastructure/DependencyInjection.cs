@@ -26,8 +26,6 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
-        services.AddTransient<IShipRepository, ShipRepository>();
-        services.AddDbContext<ShipDbContext>(options => options.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=kd100817;Database=shipyard_dev;"));
         services.AddDbContext<UserDbContext>(options => options.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=kd100817;Database=shipyard_dev;"));
 
         return services;
