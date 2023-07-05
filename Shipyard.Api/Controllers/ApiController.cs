@@ -1,8 +1,10 @@
 using ErrorOr;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Shipyard.Api.Controllers;
 
+[Authorize]
 [ApiController]
 public class ApiController : ControllerBase
 {

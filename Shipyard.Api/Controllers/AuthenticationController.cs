@@ -1,10 +1,12 @@
 ﻿using ErrorOr;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shipyard.Application.Services;
 using Shipyard.Contracts.Authentication;
 
 namespace Shipyard.Api.Controllers;
 
+[AllowAnonymous]
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
@@ -18,7 +20,6 @@ public class AuthenticationController : ApiController
     [HttpPost("register")]
     public IActionResult Register(RegisterRequest request)
     {
-        
         var authResult = _authService.Register(request.FirstName, request.LastName, request.Email, request.Password);
         return authResult.Match(
             validResult => Ok(validResult),
