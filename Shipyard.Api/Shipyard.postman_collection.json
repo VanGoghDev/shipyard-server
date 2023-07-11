@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "11e8c4d9-b709-4646-8ecf-8f714d176d33",
+		"name": "Shipyard",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20240106"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Jack\",\r\n    \"lastName\": \"Sparrow\",\r\n    \"email\": \"black_pearl@caribbean.com\",\r\n    \"password\": \"kraken\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/auth/register",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"black_pearl@caribbean.com\",\r\n    \"password\": \"kraken\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/auth/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ShipModels",
+			"item": [
+				{
+					"name": "MyModels",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"dauria-z@mail.ru\",\r\n\"username\":\"dauria\",\r\n\"password\":\"123456-Zd\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7229/api/account/sign-up",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"account",
+						"sign-up"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "sign-in",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"dauria-z@mail.ru\",\r\n    \"password\":\"123456-Zd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7229/api/account/sign-in",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"account",
+						"sign-in"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "my-profile",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7229/api/account/my-profile/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjZGE5ZGJhMC01YTNjLTRjMTQtOWQ0MS05MDkwYjc1NTc4MTYiLCJuYW1lIjoiZGF1cmlhIiwiZW1haWwiOiJkYXVyaWEtekBtYWlsLnJ1IiwibmJmIjoxNjg3Mjg3ODQ0LCJleHAiOjE2ODcyOTUwNDQsImlhdCI6MTY4NzI4Nzg0NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOS8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MjI5LyJ9.Z29IHkQGOUvYZrCBauY6gMooeSeibg2DpEC7iSz-_2A",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7229",
+					"path": [
+						"api",
+						"account",
+						"my-profile",
+						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiJjZGE5ZGJhMC01YTNjLTRjMTQtOWQ0MS05MDkwYjc1NTc4MTYiLCJuYW1lIjoiZGF1cmlhIiwiZW1haWwiOiJkYXVyaWEtekBtYWlsLnJ1IiwibmJmIjoxNjg3Mjg3ODQ0LCJleHAiOjE2ODcyOTUwNDQsImlhdCI6MTY4NzI4Nzg0NCwiaXNzIjoiaHR0cHM6Ly9sb2NhbGhvc3Q6NzIyOS8iLCJhdWQiOiJodHRwczovL2xvY2FsaG9zdDo3MjI5LyJ9.Z29IHkQGOUvYZrCBauY6gMooeSeibg2DpEC7iSz-_2A"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
