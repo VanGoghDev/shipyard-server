@@ -7,4 +7,6 @@ public interface IUserRepository
     public void AddUser(User user);
 
     public User? GetUserByEmail(string email);
+
+    public void AddRoleToUser(string email, Role role);
 }

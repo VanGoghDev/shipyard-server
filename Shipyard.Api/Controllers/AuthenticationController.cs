@@ -10,7 +10,7 @@ namespace Shipyard.Api.Controllers;
 [Route("auth")]
 public class AuthenticationController : ApiController
 {
-    private IAuthService _authService;
+    private readonly IAuthService _authService;
 
     public AuthenticationController(IAuthService authService)
     {

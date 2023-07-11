@@ -15,10 +15,19 @@ public class UserRepository : IUserRepository
     public void AddUser(User user)
     {
         _dbContext.Users.Add(user);
+        _dbContext.SaveChanges();
     }
 
     public User? GetUserByEmail(string email)
     {
-        return _dbContext.Users.SingleOrDefault(u => u.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
+        return _dbContext.Users.SingleOrDefault(u => u.Email.Equals(email));
+    }
+
+    public void AddRoleToUser(string email, Role role)
+    {
+        var user = _dbContext.Users.SingleOrDefault(u => u.Email.Equals(email));
+
+        user?.Roles.Add(role);
+        _dbContext.SaveChanges();
     }
 }

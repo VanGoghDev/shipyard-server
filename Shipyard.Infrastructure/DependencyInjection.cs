@@ -7,10 +7,12 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Shipyard.Application.Common.Interfaces.Authentication;
 using Shipyard.Application.Common.Interfaces.Persistence;
+using Shipyard.Application.Common.Interfaces.Persistence.Administation;
 using Shipyard.Application.Common.Services;
 using Shipyard.Infrastructure.Authentication;
 using Shipyard.Infrastructure.Persistence;
 using Shipyard.Infrastructure.Persistence.Repositories;
+using Shipyard.Infrastructure.Persistence.Repositories.Administration;
 using Shipyard.Infrastructure.Services;
 
 namespace Shipyard.Infrastructure;
@@ -27,6 +29,7 @@ public static class DependencyInjection
     public static IServiceCollection AddPersistence(this IServiceCollection services)
     {
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IRoleRepository, RoleRepository>();
         services.AddDbContext<UserDbContext>(options => 
             options.UseNpgsql("Server=localhost;Port=5432;User Id=postgres;Password=kd100817;Database=shipyard_dev;"));
 
