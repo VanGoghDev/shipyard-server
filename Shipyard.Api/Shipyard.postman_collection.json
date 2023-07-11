@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "11e8c4d9-b709-4646-8ecf-8f714d176d33",
+		"_postman_id": "5bb59d6c-b2e5-46e2-baa8-12a9c79473bb",
 		"name": "Shipyard",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20240106"
+		"_exporter_id": "6835110"
 	},
 	"item": [
 		{
@@ -24,10 +24,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{domain}}/auth/register",
+							"raw": "https://localhost:7071/auth/register",
+							"protocol": "https",
 							"host": [
-								"{{domain}}"
+								"localhost"
 							],
+							"port": "7071",
 							"path": [
 								"auth",
 								"register"
@@ -51,10 +53,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{domain}}/auth/login",
+							"raw": "https://localhost:7071/auth/login",
+							"protocol": "https",
 							"host": [
-								"{{domain}}"
+								"localhost"
 							],
+							"port": "7071",
 							"path": [
 								"auth",
 								"login"
@@ -70,6 +74,51 @@
 			"item": [
 				{
 					"name": "MyModels",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Administration",
+			"item": [
+				{
+					"name": "AddRole",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Name\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7071/admin/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7071",
+							"path": [
+								"admin",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddRoleToUser",
 					"request": {
 						"method": "GET",
 						"header": []
