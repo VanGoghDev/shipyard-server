@@ -1,4 +1,4 @@
-# Cheat shit for fast ctrl+c, ctrl+v migrations
+# Cheat sheet for fast ctrl+c, ctrl+v migrations
 
 Example for UserDbContext
 
