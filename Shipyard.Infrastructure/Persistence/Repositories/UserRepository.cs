@@ -1,4 +1,5 @@
-﻿using Shipyard.Application.Common.Interfaces.Persistence;
+﻿using Microsoft.EntityFrameworkCore;
+using Shipyard.Application.Common.Interfaces.Persistence;
 using Shipyard.Domain.Entities;
 
 namespace Shipyard.Infrastructure.Persistence.Repositories;
@@ -20,7 +21,7 @@ public class UserRepository : IUserRepository
 
     public User? GetUserByEmail(string email)
     {
-        return _dbContext.Users.SingleOrDefault(u => u.Email.Equals(email));
+        return _dbContext.Users.Include(u => u.Roles).SingleOrDefault(u => u.Email.Equals(email));
     }
 
     public void AddRoleToUser(string email, Role role)

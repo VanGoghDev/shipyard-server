@@ -46,7 +46,7 @@ public class RoleService : IRoleService
         }
         // check if user exists
         var user = _userRepository.GetUserByEmail(userEmail);
-        if (user is not null)
+        if (user is null)
         {
             return new[] { Errors.User.DuplicateEmail };
         }

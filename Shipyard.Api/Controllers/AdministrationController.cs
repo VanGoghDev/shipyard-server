@@ -1,10 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shipyard.Application.Services.AdministrationServices;
 using Shipyard.Contracts.Administration;
 
 namespace Shipyard.Api.Controllers;
 
-//[Authorize(Roles = "admin")]
+[Authorize(Roles = "admin")]
 [Route("admin")]
 public class AdministrationController: ApiController
 {
